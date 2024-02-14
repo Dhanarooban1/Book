@@ -1,0 +1,3 @@
+export const ADD_CONTENT = 'ADD_CONTENT';
+export const REDUX_INPUT_TEXT = 'REDUX_INPUT_TEXT';
+
