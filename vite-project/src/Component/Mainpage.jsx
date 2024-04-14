@@ -65,7 +65,7 @@ export default function MainPage() {
       {/* Header */}
       <header className="bg-white shadow">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <h1 className="text-xl font-semibold text-gray-800">Kalvium Book</h1>
+          <h1 className="text-xl font-semibold text-gray-800">Zoho Books</h1>
           {!location.state ? (
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
               {" "}
