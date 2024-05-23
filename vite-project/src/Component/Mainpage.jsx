@@ -62,12 +62,11 @@ export default function MainPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header */}
       <header className="bg-white shadow">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <h1 className="text-xl font-semibold text-gray-800">Zoho Books</h1>
           {!location.state ? (
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+            <button className="bg-blue-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
               {" "}
               <Link to="/Register">Register</Link>{" "}
             </button>
@@ -78,30 +77,26 @@ export default function MainPage() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-6">
-        <div className="flex justify-center px-4 pt-6">
-          <input
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            className="border border-gray-300 p-2 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
-            placeholder="Search..."
-            // onKeyPress={handleKeyPress}
+      <main className="container mx-auto p-4 sm:p-6">
+      <div className="flex justify-center p-4">
+        <input
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          className="border border-gray-300 p-2 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+          placeholder="Search..."
+        />
+      </div>
+      {data.length === 0 ? (
+        <div className="flex justify-center items-center h-screen bg-white">
+          <img
+            className="h-16"
+            src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+            alt="Loading..."
           />
         </div>
-        {data.length === 0 && (
-          <div class="h-screen bg-white">
-            <div class="flex justify-center items-center h-full">
-              <img
-                class="h-16 w-16"
-                src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
-                alt=""
-              />
-            </div>
-          </div>
-        )}
-
-        <div className="grid grid-cols-4 gap-6 mt-4 w-30">
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {Array.isArray(data) && data.length !== 0 ? (
             data.map((item, index) => (
               <div
@@ -111,7 +106,7 @@ export default function MainPage() {
                 {item.imageLinks && item.imageLinks.thumbnail && (
                   <img
                     src={item.imageLinks.thumbnail}
-                    className="rounded-t-lg w-full h-48 object-fit"
+                    className="rounded-t-lg w-full h-48 object-cover"
                     alt={item.title}
                   />
                 )}
@@ -121,12 +116,13 @@ export default function MainPage() {
               </div>
             ))
           ) : (
-            <p className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               COMING SOON!
             </p>
           )}
         </div>
-      </main>
+      )}
+    </main>
     </div>
   );
 }
